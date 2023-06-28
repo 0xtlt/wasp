@@ -8,3 +8,6 @@ export { initSendGridEmailSender as initEmailSender } from "./providers/sendgrid
 {=# isMailgunProviderUsed =}
 export { initMailgunEmailSender as initEmailSender } from "./providers/mailgun.js";
 {=/ isMailgunProviderUsed =}
+{=# isPostmarkProviderUsed =}
+export { initPostmarkEmailSender as initEmailSender } from "./providers/postmark.js";
+{=/ isPostmarkProviderUsed =}

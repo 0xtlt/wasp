@@ -26,6 +26,12 @@ const emailProvider = {
   domain: process.env.MAILGUN_DOMAIN,
 } as const;
 {=/ isMailgunProviderUsed =}
+{=# isPostmarkProviderUsed =}
+const emailProvider = {
+  type: "postmark",
+  serverToken: process.env.POSTMARK_SERVER_TOKEN,
+} as const;
+{=/ isPostmarkProviderUsed =}
 
 const areEmailsSentInDevelopment = process.env.SEND_EMAILS_IN_DEVELOPMENT === "true";
 const isDummyEmailSenderUsed = waspServerConfig.isDevelopment && !areEmailsSentInDevelopment;

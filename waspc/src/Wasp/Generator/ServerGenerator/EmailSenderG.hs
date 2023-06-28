@@ -109,6 +109,7 @@ getEmailSenderProvider email = case AS.EmailSender.provider email of
   AS.EmailSender.SMTP -> Providers.smtp
   AS.EmailSender.SendGrid -> Providers.sendGrid
   AS.EmailSender.Mailgun -> Providers.mailgun
+  AS.EmailSender.Postmark -> Providers.postmark
 
 genFileCopy :: Path' (Rel C.ServerTemplatesSrcDir) File' -> Generator FileDraft
 genFileCopy = return . C.mkSrcTmplFd

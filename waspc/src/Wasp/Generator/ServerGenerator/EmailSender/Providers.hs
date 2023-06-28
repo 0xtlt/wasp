@@ -2,6 +2,7 @@ module Wasp.Generator.ServerGenerator.EmailSender.Providers
   ( smtp,
     sendGrid,
     mailgun,
+    postmark,
     providersDirInServerSrc,
     EmailSenderProvider (..),
   )
@@ -64,6 +65,20 @@ mailgun =
 
     mailgunDependency :: AS.Dependency.Dependency
     mailgunDependency = AS.Dependency.make ("ts-mailgun", show mailgunVersionRange)
+
+postmark :: EmailSenderProvider
+postmark =
+  EmailSenderProvider
+    { npmDependency = postmarkDependency,
+      setupFnFile = [relfile|postmark.ts|],
+      isEnabledKey = "isPostmarkProviderUsed"
+    }
+  where
+    postmarkVersionRange :: SV.Range
+    postmarkVersionRange = SV.Range [SV.backwardsCompatibleWith (SV.Version 0 5 1)]
+
+    postmarkDependency :: AS.Dependency.Dependency
+    postmarkDependency = AS.Dependency.make ("ts-mailgun", show postmarkVersionRange)
 
 providersDirInServerSrc :: Path' (Rel C.ServerTemplatesSrcDir) (Dir ProvidersDir)
 providersDirInServerSrc = [reldir|email/core/providers|]

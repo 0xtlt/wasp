@@ -1,4 +1,4 @@
-export type EmailProvider = SMTPEmailProvider | SendGridProvider | MailgunEmailProvider;
+export type EmailProvider = SMTPEmailProvider | SendGridProvider | MailgunEmailProvider | PostmarkProvider;
 
 export type SMTPEmailProvider = {
   type: "smtp";
@@ -6,6 +6,11 @@ export type SMTPEmailProvider = {
   port: number;
   username: string;
   password: string;
+};
+
+export type PostmarkProvider = {
+  type: "postmark";
+  serverToken: string;
 };
 
 export type SendGridProvider = {
