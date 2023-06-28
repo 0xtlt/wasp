@@ -78,7 +78,6 @@ postmark =
     postmarkVersionRange = SV.Range [SV.backwardsCompatibleWith (SV.Version 0 5 1)]
 
     postmarkDependency :: AS.Dependency.Dependency
-    postmarkDependency = AS.Dependency.make ("ts-mailgun", show postmarkVersionRange)
 
 providersDirInServerSrc :: Path' (Rel C.ServerTemplatesSrcDir) (Dir ProvidersDir)
 providersDirInServerSrc = [reldir|email/core/providers|]
